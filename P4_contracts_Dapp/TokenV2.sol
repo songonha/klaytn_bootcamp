@@ -10,7 +10,7 @@ contract TokenV2 is ERC20 {
     function deposit() public payable {
         depositOf[msg.sender] = msg.value;
         // 0.1 ether 1000 token
-        uint256 totalTokenReceive = (msg.value * 1000) * 10;
+        uint256 totalTokenReceive = (msg.value * 1000) / (0.1 * 10**18);
         _mint(msg.sender, totalTokenReceive);
     }
 }
