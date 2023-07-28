@@ -24,11 +24,13 @@ contract VotingContract {
     uint256 public proposalCount;
 
     mapping(address => mapping(uint256 => bool)) private hasVoted;
-    mapping(uint256 => uint8) public resultProposal;
+    mapping(uint256 => bool) public resultProposal;
+    // mapping(uint256 => uint8) public resultProposal;
 
     event CreateProposal(uint256);
     event CastVote(address, uint256, bool);
-    event Finalize(uint256, uint8);
+    event Finalize(uint256, bool);
+    //event Finalize(uint256, uint8);
 
     modifier checkProposalEnded(uint256 proposalId) {
         require(
@@ -80,9 +82,9 @@ contract VotingContract {
         uint256 totalSupply = votingToken.totalSupply();
         uint256 totalYesVote = (yesCount / totalSupply) * 100;
         if (totalYesVote > 50) {
-            resultProposal[proposalId] = 1;
+            resultProposal[proposalId] = true; // = 1
         } else {
-            resultProposal[proposalId] = 2;
+            resultProposal[proposalId] = false; // = 2
         }
         emit Finalize(proposalId, resultProposal[proposalId]);
     }
