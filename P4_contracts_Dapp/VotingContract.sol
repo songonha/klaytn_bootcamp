@@ -9,7 +9,7 @@ interface IToken {
 
     function totalSupply() external returns (uint256);
 }
-
+// Baobab Contract: 0x470A3a9B1874b3b1735DABAA7Cdc0b2aa159f9CD
 contract VotingContract {
     struct Proposal {
         string description;
