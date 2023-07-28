@@ -44,7 +44,7 @@ contract VotingContract {
     }
 
     function createProposal(string memory _description) public {
-        votingToken.transferFrom(msg.sender, address(this), 20 * 10 ** 18);
+        votingToken.transferFrom(msg.sender, address(this), 20);  // * 10 ** 18
         Proposal memory proposal = Proposal(
             _description,
             0,
